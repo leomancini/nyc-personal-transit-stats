@@ -150,7 +150,7 @@ function fillTripsByTimeOfDay(info) {
 
     for (let tripIndex in trips) {
         let trip = trips[tripIndex];
-        let datetime = new Date(Date.parse(trip.data.datetime));
+        let datetime = new Date(Date.parse(trip.data.datetime.replace(/-/g, '/')));
 
         let row = renderRow({
             fullWidth: true,
