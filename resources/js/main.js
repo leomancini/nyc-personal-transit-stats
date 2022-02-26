@@ -1,5 +1,11 @@
 async function getInfo() {
-    const response = await fetch('http://localhost/nyc-subway-stats/getInfo.php');
+    let dataSource = 'getInfo.php';
+
+    if (location.hostname === '127.0.0.1') {
+        dataSource = 'http://localhost/nyc-personal-transit-stats/' + dataSource;
+    }
+
+    const response = await fetch(dataSource);
     const info = await response.json();
 
     return info;
