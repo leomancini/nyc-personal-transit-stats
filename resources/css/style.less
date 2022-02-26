@@ -1,0 +1,326 @@
+@mobile: ~"only screen and (max-width: 667px)";
+@desktop: ~"only screen and (min-width: 668px)";
+
+@colorTeal: #00B6AB;
+@colorRed: #B60000;
+@colorGreen: #00B628;
+@colorOrange: #B68300;
+
+.labelBase() {
+    display: inline-block;
+    font-weight: 590;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 12px;
+}
+
+.numberBase() {
+    text-align: right;
+    float: right;
+    text-align: right;
+    letter-spacing: -0.02em;
+    color: rgba(0, 0, 0, 0.4);
+    vertical-align: top;
+}
+
+.numberSmall() {
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.numberMedium() {
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.numberLarge() {
+    .large();
+}
+
+.large() {
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.numberProminent() {
+    color:rgba(0, 0, 0, 1);
+}
+
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	-webkit-font-smoothing: antialiased;
+}
+
+html {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    
+	@media @mobile {
+		
+	}
+	
+	@media @desktop {
+	
+	}
+
+    #container {
+        @media @desktop {
+            margin: 100px auto;
+            width: 396px;
+        }
+    }
+
+    #cards {
+        filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.03)) drop-shadow(0px 2px 30px rgba(0, 0, 0, 0.1));
+
+        .card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 24px 24px 28px 24px;
+            width: calc(100% - 24px - 24px - 24px - 24px);
+            margin: 24px;
+
+            @media @desktop {
+                width: 300px;
+            }
+
+            .header {
+                .icon {
+                    display: inline-block;
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 44px;
+
+                    .image {
+                        width: 100%;
+                        height: 100%;
+                        background-repeat: no-repeat;
+                        background-position: 50% 50%;
+                    }
+                }
+
+                .title {
+                    display: inline-block;
+                    line-height: 44px;
+                    vertical-align: top;
+                    margin-left: 12px;
+                    font-style: normal;
+                    font-weight: 590;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                }
+            }
+
+            .content {
+                margin-top: 24px;
+
+                h2 {
+                    margin: 0;
+                    font-weight: bold;
+                    font-size: 18px;
+                    line-height: 21px;
+                    letter-spacing: -0.02em;
+                }
+    
+                h3 {
+                    font-weight: 590;
+                    font-size: 16px;
+                    line-height: 19px;
+                }
+
+                .divider {
+                    width: 100%;
+                    height: 1px;
+                    background: rgba(0, 0, 0, 0.04);
+                    margin: 24px 0;
+                }
+    
+                .row {
+                    width: 100%;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+                    padding-top: 16px;
+                    padding-bottom: 16px;
+    
+                    .text {
+                        font-style: normal;
+                        font-weight: 510;
+                        font-size: 18px;
+                        line-height: 21px;
+                        letter-spacing: -0.02em;
+                        display: inline-block;
+                        width: 70%;
+
+                        &.fullWidth {
+                            width: 100%!important;
+                        }
+                    }
+
+                    .secondaryText {
+                        font-style: normal;
+                        font-size: 16px;
+                        line-height: 19px;
+                        letter-spacing: -0.02em;
+                        color: rgba(0, 0, 0, 0.4);
+                        padding-top: 8px;
+                    }
+    
+                    .number {
+                        .numberBase();
+                        .numberMedium();
+                    }
+    
+                    &.large {
+                        .text {
+                            .large();
+                            font-weight: bold;
+                            width: 60%;
+                            margin-top: -2px;
+                        }
+    
+                        .number {
+                            .numberLarge();
+                            margin-top: -2px;
+                        }
+                    }
+    
+                    &:first-child {
+                        padding-top: 0;
+                    }
+
+                    &:last-child {
+                        border-bottom: none;
+                        padding-bottom: 0;
+                    }
+                }
+        
+                .yearLabel {
+                    font-weight: bold;
+                    font-size: 18px;
+                    line-height: 21px;
+                    letter-spacing: -0.02em;
+                    margin-bottom: 20px;
+                }
+
+                .barLabelPair {
+                    font-size: 0;
+                    display: block;
+                    margin-bottom: 20px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    
+                    .monthLabel {
+                        .labelBase();
+                        color: @colorRed;
+                        margin-bottom: 10px;
+                    }
+
+                    .number {
+                        .numberBase();
+                        .numberSmall();
+                    }
+                    
+                    .bar {
+                        display: inline-block;
+                        height: 8px;
+                        width: 100%;
+        
+                        .filled {
+                            display: inline-block;
+                            height: 100%;
+                            background: @colorRed;
+                            border-radius: 8px;
+
+                            &.zero {
+                                min-width: 8px;
+                                background: fadeout(@colorRed, 90%);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &#most-common-stations .header {
+                .icon {
+                    background-color: fadeout(@colorTeal, 90%);
+    
+                    .image {
+                        background-image: url('../images/icons/award.svg');
+                        filter: invert(76%) sepia(68%) saturate(5763%) hue-rotate(138deg) brightness(93%) contrast(101%);
+                    }
+                }
+    
+                .title {
+                    color: @colorTeal;
+                }
+            }
+            
+            &#trips-per-month .header {
+                .icon {
+                    background-color: fadeout(@colorRed, 90%);
+    
+                    .image {
+                        background-image: url('../images/icons/calendar.svg');
+                        filter: invert(8%) sepia(86%) saturate(5603%) hue-rotate(358deg) brightness(107%) contrast(110%);
+                    }
+                }
+    
+                .title {
+                    color: @colorRed;
+                }
+            }
+            
+            &#total-spent {
+                .header {
+                    .icon {
+                        background-color: fadeout(@colorGreen, 90%);
+        
+                        .image {
+                            background-image: url('../images/icons/money.svg');
+                            filter: invert(40%) sepia(95%) saturate(2571%) hue-rotate(113deg) brightness(103%) contrast(102%);
+                        }
+                    }
+        
+                    .title {
+                        color: @colorGreen;
+                    }
+                }
+
+                .content {
+                    .number.prominent {
+                        .numberProminent();
+                    }
+                }
+            }
+            
+            &#trips-by-time-of-day {
+                .header {
+                    .icon {
+                        background-color: fadeout(@colorOrange, 90%);
+        
+                        .image {
+                            background-image: url('../images/icons/sun.svg');
+                            filter: invert(60%) sepia(66%) saturate(5003%) hue-rotate(25deg) brightness(96%) contrast(101%);
+                        }
+                    }
+        
+                    .title {
+                        color: @colorOrange;
+                    }
+                }
+
+                .content {
+                    .label {
+                        .labelBase();
+                        display: block;
+                        color: @colorOrange;
+                    }
+                }
+            }
+        }
+    }
+}
