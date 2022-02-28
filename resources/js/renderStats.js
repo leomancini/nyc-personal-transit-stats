@@ -1,16 +1,3 @@
-async function getInfo() {
-    let dataSource = 'getInfo.php';
-
-    if (location.hostname === '127.0.0.1') {
-        dataSource = 'http://localhost/nyc-personal-transit-stats/' + dataSource;
-    }
-
-    const response = await fetch(dataSource);
-    const info = await response.json();
-
-    return info;
-}
-
 function renderRow(fields) {
     let row = document.createElement('div');
     row.classList = 'row';
@@ -187,17 +174,3 @@ function fillTotalSpent(info) {
         index++;
     }
 }
-
-async function load() {
-    const info = await getInfo();
-
-    fillMostCommonStations(info);
-
-    fillTripsPerMonth(info);
-    
-    fillTotalSpent(info);
-
-    fillTripsByTimeOfDay(info);
-}
-
-load();
