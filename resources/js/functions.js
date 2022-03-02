@@ -10,3 +10,11 @@ async function getInfo(options) {
 
     return info;
 }
+
+function showCards() {
+    const cards = document.querySelector('#cards');
+
+    setTimeout(function() {
+        cards.classList.add('visible');
+    }, 500);
+}

@@ -10,6 +10,8 @@ async function load() {
     fillTripsByTimeOfDay(info);
 
     renderMap(info, { limitBounds: true });
+
+    showCards();
 }
 
 load();
