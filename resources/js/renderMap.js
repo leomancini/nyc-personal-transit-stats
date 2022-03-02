@@ -1,7 +1,12 @@
-async function renderMap(info) {
+async function renderMap(info, options) {
     let mapPoints = info.mapPoints;
 
     mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbWFuY2luaSIsImEiOiJjbDA1ZGVteG8xd25qM2pwa3c1dWk1cHRwIn0.qzsxXTieaF8TeauDH1oJkw';
+
+    let maxBounds = null;
+    if (options && options.limitBounds) {
+        maxBounds = [[-74.3782997, 40.3098117], [-73.5627043, 41.1567828]];
+    }
 
     const map = new mapboxgl.Map({
         container: 'map',
@@ -17,16 +22,7 @@ async function renderMap(info) {
             ]
         },
         center: [-73.92601644070272, 40.748047211371016],
-        maxBounds: [
-            [
-                -74.3782997,
-                40.3098117
-              ],
-              [
-                -73.5627043,
-                41.1567828
-              ]
-        ],
+        maxBounds: maxBounds,
         zoom: 10.25,
         maxZoom: 10.75,
         minZoom: 9.25

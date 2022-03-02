@@ -9,7 +9,7 @@ async function load() {
 
     fillTripsByTimeOfDay(info);
 
-    renderMap(info);
+    renderMap(info, { limitBounds: true });
 }
 
 load();

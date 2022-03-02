@@ -14,59 +14,14 @@
 </head>
 <body>
     <div id='map'></div>
+    <script src='resources/js/renderMap.js'></script>
     <script src='resources/js/functions.js'></script>
 
     <script>
         async function load() {
-            let info = await getInfo();
-            let mapPoints = info.mapPoints;
+            const info = await getInfo();
 
-            mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbWFuY2luaSIsImEiOiJjbDA1ZGVteG8xd25qM2pwa3c1dWk1cHRwIn0.qzsxXTieaF8TeauDH1oJkw';
-
-            const map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/leomancini/cl05yhjio001t14l3xbaxfzg4',
-                center: [-73.92, 40.73],
-                zoom: 10.5
-            });
-
-            const camera = map.getFreeCameraOptions();           
-            camera.setPitchBearing(0, 31);
-            map.setFreeCameraOptions(camera);
-
-            map.on('load', () => {
-                map.loadImage('resources/images/map/station.png', (error, image) => {
-                    if (error) throw error;
-                    map.addImage('station', image);
-                    map.addSource('stations', mapPoints.notVisited);
-
-                    map.addLayer({
-                        'id': 'stations',
-                        'type': 'symbol',
-                        'source': 'stations',
-                        'layout': {
-                            'icon-size': 0.5,
-                            'icon-image': 'station',
-                        }
-                    });
-
-                    map.loadImage('resources/images/map/station-visited.png', (error, image) => {
-                        if (error) throw error;
-                        map.addImage('station-visited', image);
-                        map.addSource('stations-visited', mapPoints.visited);
-
-                        map.addLayer({
-                            'id': 'stations-visited',
-                            'type': 'symbol',
-                            'source': 'stations-visited',
-                            'layout': {
-                                'icon-size': 0.5,
-                                'icon-image': 'station-visited',
-                            }
-                        });
-                    });
-                });
-            });
+            renderMap(info);
         }
 
         load();
