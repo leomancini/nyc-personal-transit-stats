@@ -14,44 +14,46 @@
 
     if ($_GET['debug']) { echo '<pre>'; }
 
-    if ($_GET['mapPoints']) {
-        $visitedStations = [
-            'names' => [],
-            'locations' => []
-        ];
+    $visitedStations = [
+        'names' => [],
+        'locations' => []
+    ];
 
-        foreach($tripHistoryWithLocationData as $tripKey => $tripValue) {
-            array_push($visitedStations['names'], $tripHistoryWithLocationData[$tripKey]['bestStationMatch']['name']);
-            array_push($visitedStations['locations'], [
+    foreach($tripHistoryWithLocationData as $tripKey => $tripValue) {
+        array_push($visitedStations['names'], $tripHistoryWithLocationData[$tripKey]['bestStationMatch']['name']);
+        array_push($visitedStations['locations'], [
+            'type' => 'Feature',
+            'geometry' => [
+                'type' => 'Point',
+                'coordinates' => $tripHistoryWithLocationData[$tripKey]['bestStationMatch']['coordinates']
+            ]
+        ]);
+    }
+
+    $subwayStationsLocationData = getSubwayStationsLocationsData();
+
+    $notVisitedStations = [
+        'names' => [],
+        'locations' => []
+    ];
+
+    foreach ($subwayStationsLocationData as &$subwayStationLocationData) {
+        // Don't add stations that have been visited
+        if (!in_array($subwayStationLocationData->properties->name, $visitedStations['names'])) {
+            array_push($notVisitedStations['locations'], [
                 'type' => 'Feature',
                 'geometry' => [
                     'type' => 'Point',
-                    'coordinates' => $tripHistoryWithLocationData[$tripKey]['bestStationMatch']['coordinates']
+                    'coordinates' => $subwayStationLocationData->geometry->coordinates
                 ]
             ]);
         }
+    }
 
-        $subwayStationsLocationData = getSubwayStationsLocationsData();
-
-        $notVisitedStations = [
-            'names' => [],
-            'locations' => []
-        ];
-
-        foreach ($subwayStationsLocationData as &$subwayStationLocationData) {
-            // Don't add stations that have been visited
-            if (!in_array($subwayStationLocationData->properties->name, $visitedStations['names'])) {
-                array_push($notVisitedStations['locations'], [
-                    'type' => 'Feature',
-                    'geometry' => [
-                        'type' => 'Point',
-                        'coordinates' => $subwayStationLocationData->geometry->coordinates
-                    ]
-                ]);
-            }
-        }
-
-        echo json_encode([
+    echo json_encode([
+        'stats' => $stats,
+        'tripHistory' => $tripHistoryWithLocationData,
+        'mapPoints' => [
             'visited' => [
                 'type' => 'geojson',
                 'data' => [
@@ -66,13 +68,8 @@
                     'features' => $notVisitedStations['locations']
                 ]
             ]
-        ]);
-    } else {
-        echo json_encode([
-            'stats' => $stats,
-            'tripHistory' => $tripHistoryWithLocationData
-        ]);
-    }
+        ]
+    ]);
 
     if ($_GET['debug']) { echo '</pre>'; }
 ?>

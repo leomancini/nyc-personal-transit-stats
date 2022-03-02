@@ -18,9 +18,10 @@
 
     <script>
         async function load() {
-            let mapPoints = await getInfo({ mapPoints: true });
+            let info = await getInfo();
+            let mapPoints = info.mapPoints;
 
-            mapboxgl.accessToken = '<?php echo $_SECRETS['MAPBOX_ACCESS_TOKEN']; ?>';
+            mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbWFuY2luaSIsImEiOiJjbDA1ZGVteG8xd25qM2pwa3c1dWk1cHRwIn0.qzsxXTieaF8TeauDH1oJkw';
 
             const map = new mapboxgl.Map({
                 container: 'map',

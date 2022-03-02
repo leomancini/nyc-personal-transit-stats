@@ -8,6 +8,8 @@ async function load() {
     fillTotalSpent(info);
 
     fillTripsByTimeOfDay(info);
+
+    renderMap(info);
 }
 
 load();
