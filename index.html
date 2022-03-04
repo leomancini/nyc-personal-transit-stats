@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>NYC Personal Transit Stats</title>
-		<link rel='stylesheet/less' href='resources/css/style.less'>
+		<link rel='stylesheet/less' href='resources/css/style.less?v=45766474'>
 		<script src='resources/js/lib/less.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet'>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
@@ -20,7 +20,7 @@
                     </div>
                     <div class='content'></div>
                 </div>
-                <div class='card' id='map'>
+                <div class='card' id='stations-visited'>
                     <div class='gradient'></div>
                     <div class='header'>
                         <div class='icon'>
@@ -28,7 +28,7 @@
                         </div>
                         <div class='title'>Stations Visited</div>
                     </div>
-                    <div class='content'></div>
+                    <div id='map'></div>
                 </div>
                 <div class='card' id='trips-by-time-of-day'>
                     <div class='header'>
