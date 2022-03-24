@@ -2,3 +2,4 @@ data/
 data/*
 .DS_Store
 secrets.php
+scraper-tests/
