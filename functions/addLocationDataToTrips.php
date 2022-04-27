@@ -30,6 +30,7 @@
             $stationName = str_replace('34 St - 11 Av', '34 St - Hudson Yards', $stationName);
             $stationName = str_replace('14 St - Union Sq', 'Union Sq - 14th St', $stationName);
 
+            $stationName = str_replace('/', ' ', $stationName);
             $stationName = str_replace(' / ', ' ', $stationName);
             $stationName = str_replace(' - ', ' ', $stationName);
             $stationName = str_replace('-', ' ', $stationName);
