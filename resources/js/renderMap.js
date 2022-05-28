@@ -24,7 +24,7 @@ async function renderMap(info, options) {
         center: [-73.92601644070272, 40.748047211371016],
         maxBounds: maxBounds,
         zoom: 10.25,
-        maxZoom: 10.75,
+        maxZoom: 13,
         minZoom: 9.25
     });
 

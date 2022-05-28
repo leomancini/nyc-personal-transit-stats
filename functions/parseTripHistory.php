@@ -24,11 +24,11 @@
                 if ($line > 1) {
                     for ($key = 0; $key < $numberOfLines; $key++) {
                         $arrayItem['id'] = $data[0];
-                        $arrayItem['datetime'] = $data[1];
-                        $arrayItem['type'] = $data[2];
-                        $arrayItem['station'] = $data[3];
-                        $arrayItem['payment'] = $data[4];
-                        $arrayItem['fare'] = $data[5];
+                        $arrayItem['datetime'] = $data[2];
+                        $arrayItem['type'] = $data[3];
+                        $arrayItem['station'] = $data[4];
+                        $arrayItem['payment'] = $data[5];
+                        $arrayItem['fare'] = $data[6];
                     }
     
                     array_push($array, $arrayItem);

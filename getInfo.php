@@ -20,14 +20,16 @@
     ];
 
     foreach($tripHistoryWithLocationData as $tripKey => $tripValue) {
-        array_push($visitedStations['names'], $tripHistoryWithLocationData[$tripKey]['bestStationMatch']['name']);
-        array_push($visitedStations['locations'], [
-            'type' => 'Feature',
-            'geometry' => [
-                'type' => 'Point',
-                'coordinates' => $tripHistoryWithLocationData[$tripKey]['bestStationMatch']['coordinates']
-            ]
-        ]);
+        if ($tripHistoryWithLocationData[$tripKey]['bestStationMatch']['coordinates']) {
+            array_push($visitedStations['names'], $tripHistoryWithLocationData[$tripKey]['bestStationMatch']['name']);
+            array_push($visitedStations['locations'], [
+                'type' => 'Feature',
+                'geometry' => [
+                    'type' => 'Point',
+                    'coordinates' => $tripHistoryWithLocationData[$tripKey]['bestStationMatch']['coordinates']
+                ]
+            ]);
+        }
     }
 
     $subwayStationsLocationData = getSubwayStationsLocationsData();
