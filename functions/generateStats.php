@@ -38,9 +38,9 @@
         $totalBusFares = array_sum($fares['bus']);
         
         $stats['totalSpent'] = [
+            'total' => $totalSubwayFares + $totalBusFares,
             'subway' => $totalSubwayFares,
-            'bus' => $totalBusFares,
-            'total' => $totalSubwayFares + $totalBusFares
+            'bus' => $totalBusFares
         ];
 
 
@@ -64,9 +64,9 @@
         $totalBusTrips = array_sum($tripCounts['bus']);
         
         $stats['totalNumberOfTrips'] = [
+            'total' => $totalSubwayTrips + $totalBusTrips,
             'subway' => $totalSubwayTrips,
             'bus' => $totalBusTrips,
-            'total' => $totalSubwayTrips + $totalBusTrips
         ];
 
 
