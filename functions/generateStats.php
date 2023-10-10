@@ -81,10 +81,10 @@
         $numberOfTripsPerMonth = array_count_values($yearMonthPairs);
 
         $begin = new DateTime('2021-09-10');
-        $now = new DateTime();
+        $end = new DateTime('2023-07-14');
     
         $interval = DateInterval::createFromDateString('1 month');
-        $period = new DatePeriod($begin, $interval, $now);
+        $period = new DatePeriod($begin, $interval, $end);
         
         $everyYearMonthPair = [];
     
